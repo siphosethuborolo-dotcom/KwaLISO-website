@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KwaLISO | Premium 3-Layer Hoodies & Streetwear</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37',
+                            terracotta: '#C85A32',
+                            dark: '#121212',
+                            card: '#1A1A1A',
+                            accent: '#FF5E36',
+                            muted: '#8E8E93',
+                            light: '#F5F5F7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Syne', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0d0d0d;
+            color: #f5f5f7;
+            overflow-x: hidden;
+        }
+        .font-display {
+            font-family: 'Syne', sans-serif;
+        }
+        .glass {
+            background: rgba(26, 26, 26, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #FFF 30%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 30%, rgba(200, 90, 50, 0.15) 0%, rgba(18, 18, 18, 0) 70%);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #121212;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a2a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3a3a3a;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col justify-between selection:bg-brand-terracotta selection:text-white">
+
+    <div class="bg-gradient-to-r from-brand-terracotta via-amber-600 to-brand-gold text-black text-xs font-bold py-2 px-4 text-center tracking-wider uppercase">
+        <span class="inline-block animate-pulse mr-2">🔥</span> Premium 3-Layer Heavyweight Hoodies Now Live – Only R220 | Door Delivery Across SA 🇿🇦
+    </div>
+
+    <header class="sticky top-0 z-40 glass">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-terracotta to-brand-gold flex items-center justify-center font-display font-extrabold text-xl text-black transform group-hover:rotate-6 transition-transform">
+                    K
+                </div>
+                <span class="font-display font-extrabold text-2xl tracking-widest text-white uppercase">Kwa<span class="text-brand-terracotta">LISO</span></span>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold tracking-wide">
+                <a href="#featured" class="hover:text-brand-gold transition-colors">FLAGSHIP HOODIE</a>
+                <a href="#shop" class="hover:text-brand-gold transition-colors">COLLECTION</a>
+                <a href="#features" class="hover:text-brand-gold transition-colors">3-LAYER TECH</a>
+                <button onclick="toggleModal('sizeGuideModal')" class="hover:text-brand-gold transition-colors flex items-center gap-1">
+                    <i class="fa-solid me-1 fa-ruler-horizontal text-xs"></i> SIZE GUIDE
+                </button>
+            </nav>
+
+            <!-- Actions Right -->
+            <div class="flex items-center space-x-5">
+                <button onclick="toggleModal('searchModal')" class="text-gray-300 hover:text-white p-2 text-lg transition-colors">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button onclick="toggleCartDrawer()" class="relative bg-white/10 hover:bg-white/20 text-white p-2.5 rounded-full transition-all flex items-center justify-center">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cartBadge" class="absolute -top-1 -right-1 bg-brand-terracotta text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-brand-dark hidden">0</span>
+                </button>
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white p-2 text-xl">
+                    <i class="fa-solid fa-bars" id="menuIcon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden glass border-t border-white/10 px-6 py-6 space-y-4">
+            <a href="#featured" onclick="toggleMobileMenu()" class="block text-lg font-semibold hover:text-brand-gold">Flagship Hoodie</a>
+            <a href="#shop" onclick="toggleMobileMenu()" class="block text-lg font-semibold hover:text-brand-gold">Shop Collection</a>
+            <a href="#features" onclick="toggleMobileMenu()" class="block text-lg font-semibold hover:text-brand-gold">3-Layer Tech</a>
+            <button onclick="toggleMobileMenu(); toggleModal('sizeGuideModal')" class="block text-lg font-semibold hover:text-brand-gold text-left w-full">Size Guide</button>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <section id="featured" class="relative py-12 lg:py-20 hero-gradient overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Column: Media & Product Gallery -->
+                    <div class="lg:col-span-7 flex flex-col gap-4">
+                        <div class="relative bg-stone-900 rounded-3xl overflow-hidden border border-white/10 group aspect-square max-h-[550px] flex items-center justify-center">
+                            <!-- SVG Hoodie Representation with dynamic color styling -->
+                            <div id="heroHoodieContainer" class="w-full h-full p-8 flex items-center justify-center transition-all duration-500">
+                                <svg id="heroHoodieSvg" viewBox="0 0 500 500" class="w-4/5 h-4/5 drop-shadow-2xl transition-all duration-300">
+                                    <!-- Hoodie Outer Silhouette -->
+                                    <path id="hoodieBody" d="M150,140 Q250,90 350,140 L440,220 Q420,270 380,260 L360,230 L370,440 Q250,460 130,440 L140,230 L120,260 Q80,270 60,220 Z" fill="#1e1e1e" stroke="#333" stroke-width="2" />
+                                    <!-- Hood Interior & Drawstrings -->
+                                    <path d="M200,125 Q250,170 300,125 Q250,80 200,125 Z" fill="#111" />
+                                    <!-- 3-Layer Thermal Trim Outline -->
+                                    <path d="M210,135 Q250,175 290,135" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="4,4"/>
+                                    <path d="M230,165 L225,260" fill="none" stroke="#e5e5e5" stroke-width="3" stroke-linecap="round"/>
+                                    <path d="M270,165 L275,260" fill="none" stroke="#e5e5e5" stroke-width="3" stroke-linecap="round"/>
+                                    <!-- Pocket -->
+                                    <path d="M180,330 L320,330 L340,410 L160,410 Z" fill="#151515" stroke="#333" stroke-width="2" />
+                                    <!-- Brand Logo Embroidered -->
+                                    <text x="250" y="240" font-family="'Syne', sans-serif" font-weight="bold" font-size="22" fill="#D4AF37" text-anchor="middle" letter-spacing="4">KWALISO</text>
+                                    <text x="250" y="258" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" fill="#888" text-anchor="middle" letter-spacing="2">3-LAYER HEAVYWEIGHT</text>
+                                </svg>
+                            </div>
+                            
+                            <!-- Product Tag Overlay -->
+                            <div class="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 text-xs font-semibold tracking-wider text-amber-400 uppercase flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span> High Demand
+                            </div>
+                            
+                            <div class="absolute bottom-6 right-6 bg-black/80 backdrop-blur-md px-5 py-3 rounded-2xl border border-white/10 text-right">
+                                <p class="text-xs text-stone-400">Layering Spec</p>
+                                <p class="text-sm font-bold text-white">420 GSM Premium Cotton</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Product Selector & Info -->
+                    <div class="lg:col-span-5 flex flex-col justify-center space-y-6">
+                        <div>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-brand-terracotta/20 text-brand-terracotta text-xs font-bold tracking-widest uppercase mb-3">
+                                <i class="fa-solid fa-shield-halved"></i> Signature Tech Apparel
+                            </div>
+                            <h1 class="font-display text-4xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                                Heavyweight <span class="gradient-text">3-Layer Hoodie</span>
+                            </h1>
+                            <div class="mt-4 flex items-center justify-between">
+                                <div class="flex items-baseline gap-3">
+                                    <span class="text-4xl font-extrabold text-white">R220</span>
+                                    <span class="text-lg text-stone-500 line-through">R250</span>
+                                    <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded">51% OFF</span>
+                                </div>
+                                <div class="flex items-center text-amber-400 text-sm">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <span class="text-stone-400 text-xs ml-2">(148 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-stone-300 text-sm leading-relaxed">
+                            Designed in South Africa for ultimate comfort and durability. Features our signature 3-layer insulation system: inner brushed fleece for heat retention, thermal core mid-layer, and high-density cotton exterior.
+                        </p>
+
+                        <!-- Color Selector -->
+                        <div>
+                            <label class="block text-xs font-bold tracking-wider text-stone-400 uppercase mb-3">
+                                Color: <span id="selectedColorName" class="text-white"> Black</span>
+                            </label>
+                            <div class="flex gap-3">
+                                <button onclick="selectHeroColor('Black', '#1e1e1e')" class="hero-color-btn w-10 h-10 rounded-full bg-stone-900 border-2 border-brand-gold flex items-center justify-center transition-all focus:outline-none" title=" Black">
+                                    <span class="w-3 h-3 rounded-full bg-black"></span>
+                                </button>
+                                <button onclick="selectHeroColor('GREY', '#923c1e')" class="hero-color-btn w-10 h-10 rounded-full bg-stone-900 border-2 border-transparent hover:border-white/40 flex items-center justify-center transition-all focus:outline-none" title="GREY">
+                                    <span class="w-3 h-3 rounded-full bg-[#923c1e]"></span>
+                                </button>
+                                <button onclick="selectHeroColor(' Beige', '#c5b39b')" class="hero-color-btn w-10 h-10 rounded-full bg-stone-900 border-2 border-transparent hover:border-white/40 flex items-center justify-center transition-all focus:outline-none" title="Beige">
+                                    <span class="w-3 h-3 rounded-full bg-[#c5b39b]"></span>
+                                </button>
+                                <button onclick="selectHeroColor('red', '#1b3b2b')" class="hero-color-btn w-10 h-10 rounded-full bg-stone-900 border-2 border-transparent hover:border-white/40 flex items-center justify-center transition-all focus:outline-none" title="RED">
+                                    <span class="w-3 h-3 rounded-full bg-[#1b3b2b]"></span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Size Selector -->
+                        <div>
+                            <div class="flex justify-between items-center mb-3">
+                                <label class="block text-xs font-bold tracking-wider text-stone-400 uppercase">Select Size</label>
+                                <button onclick="toggleModal('sizeGuideModal')" class="text-xs text-brand-gold underline hover:text-amber-300">View Fit Guide</button>
+                            </div>
+                            <div class="grid grid-cols-5 gap-2">
+                                <button onclick="selectHeroSize('S')" class="hero-size-btn py-3 rounded-xl border border-white/10 text-sm font-bold hover:border-brand-gold transition-all bg-white/5">S</button>
+                                <button onclick="selectHeroSize('M')" class="hero-size-btn py-3 rounded-xl border border-brand-gold text-sm font-bold bg-brand-gold text-black transition-all">M</button>
+                                <button onclick="selectHeroSize('L')" class="hero-size-btn py-3 rounded-xl border border-white/10 text-sm font-bold hover:border-brand-gold transition-all bg-white/5">L</button>
+                                <button onclick="selectHeroSize('XL')" class="hero-size-btn py-3 rounded-xl border border-white/10 text-sm font-bold hover:border-brand-gold transition-all bg-white/5">XL</button>
+                                <button onclick="selectHeroSize('XXL')" class="hero-size-btn py-3 rounded-xl border border-white/10 text-sm font-bold hover:border-brand-gold transition-all bg-white/5">XXL</button>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button onclick="addHeroToCart()" class="flex-1 bg-gradient-to-r from-brand-terracotta to-amber-600 hover:from-amber-600 hover:to-brand-terracotta text-white font-bold py-4 px-6 rounded-2xl shadow-lg shadow-brand-terracotta/20 flex items-center justify-center gap-3 transition-all transform active:scale-95">
+                                <i class="fa-solid fa-bag-shopping"></i> Add To Bag - R220
+                            </button>
+                            <button onclick="orderHeroWhatsApp()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-3 transition-all transform active:scale-95">
+                                <i class="fa-brands fa-whatsapp text-xl"></i> Quick WhatsApp
+                            </button>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="grid grid-cols-3 gap-2 pt-4 border-t border-white/10 text-center">
+                            <div class="p-2">
+                                <i class="fa-solid fa-truck-fast text-brand-gold text-lg mb-1"></i>
+                                <p class="text-[11px] text-stone-400">Fast Nationwide Delivery</p>
+                            </div>
+                            <div class="p-2">
+                                <i class="fa-solid fa-layer-group text-brand-gold text-lg mb-1"></i>
+                                <p class="text-[11px] text-stone-400">3-Layer Thermal Tech</p>
+                            </div>
+                            <div class="p-2">
+                                <i class="fa-solid fa-arrow-rotate-left text-brand-gold text-lg mb-1"></i>
+                                <p class="text-[11px] text-stone-400">Easy Returns & Exchanges</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-16 bg-black/60 border-y border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                        The 3-Layer <span class="text-brand-terracotta">KwaLISO Spec</span>
+                    </h2>
+                    <p class="mt-3 text-stone-400 text-sm">
+                        Why our R220 hoodie outlasts standard high-street hoodies in softness, warmth, and structural integrity.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group hover:border-brand-gold/40 transition-all">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-terracotta/20 text-brand-terracotta flex items-center justify-center text-xl font-bold mb-6">
+                            01
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Outer Armor</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            100% High-Density Combed Cotton outer shell resistant to pilling, wind chill, and fading over multiple washes.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group hover:border-brand-gold/40 transition-all border-brand-gold/20">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-gold/20 text-brand-gold flex items-center justify-center text-xl font-bold mb-6">
+                            02
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Thermal Core</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            Insulated mid-mesh layer that traps natural body heat while remaining breathable enough for active urban wear.
+                        </p>
+                    </div>
+
+                    <div class="glass-card p-8 rounded-3xl relative overflow-hidden group hover:border-brand-gold/40 transition-all">
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/20 text-amber-500 flex items-center justify-center text-xl font-bold mb-6">
+                            03
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Brushed Fleece Lining</h3>
+                        <p class="text-stone-400 text-sm leading-relaxed">
+                            Ultra-soft plush fleece interior designed for direct skin comfort, zero itching, and maximum warmth in colder seasons.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="shop" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <h2 class="font-display text-3xl font-extrabold text-white">Full Collection</h2>
+                    <p class="text-stone-400 text-sm mt-1">Explore KwaLISO signature apparel and essentials</p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2" id="categoryFilters">
+                    <button onclick="filterCategory('all')" class="cat-btn active px-4 py-2 rounded-xl text-xs font-bold bg-brand-gold text-black transition-all">All Items</button>
+                    <button onclick="filterCategory('hoodies')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-stone-300 hover:bg-white/10 transition-all">Hoodies (R220)</button>
+                    <button onclick="filterCategory('sweaters')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-stone-300 hover:bg-white/10 transition-all">Sweaters</button>
+                    <button onclick="filterCategory('tees')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-stone-300 hover:bg-white/10 transition-all">Tees</button>
+                    <button onclick="filterCategory('accessories')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-stone-300 hover:bg-white/10 transition-all">Headwear & Caps</button>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="productsGrid">
+                <!-- Products dynamically populated via JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-black border-t border-white/10 pt-16 pb-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <!-- Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-terracotta to-brand-gold flex items-center justify-center font-display font-bold text-black">
+                            K
+                        </div>
+                        <span class="font-display font-extrabold text-xl tracking-widest text-white">Kwa<span class="text-brand-terracotta">LISO</span></span>
+                    </div>
+                    <p class="text-stone-400 text-xs leading-relaxed">
+                        Authentic South African urban fashion brand specializing in premium quality heavyweight 3-layer hoodies and luxury everyday streetwear.
+                    </p>
+                    <div class="flex space-x-3 text-stone-400 text-lg">
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="hover:text-brand-gold transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-bold text-sm text-white mb-4 uppercase tracking-wider">Quick Navigation</h4>
+                    <ul class="space-y-2 text-xs text-stone-400">
+                        <li><a href="#featured" class="hover:text-white transition-colors">Flagship Hoodie (R220)</a></li>
+                        <li><a href="#shop" class="hover:text-white transition-colors">New Arrivals</a></li>
+                        <li><a href="#features" class="hover:text-white transition-colors">3-Layer Fabric Specs</a></li>
+                        <li><button onclick="toggleModal('sizeGuideModal')" class="hover:text-white transition-colors">Fit & Size Guide</button></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Care -->
+                <div>
+                    <h4 class="font-bold text-sm text-white mb-4 uppercase tracking-wider">Customer Care</h4>
+                    <ul class="space-y-2 text-xs text-stone-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Shipping & Delivery (RSA)</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Returns & Exchanges</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Care Instructions</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Bulk & Wholesale Orders</a></li>
+                    </ul>
+                </div>
+
+                <!-- Direct Contact -->
+                <div>
+                    <h4 class="font-bold text-sm text-white mb-4 uppercase tracking-wider">Direct Order & Enquiries</h4>
+                    <p class="text-xs text-stone-400 mb-3">Order directly via WhatsApp for fast support & delivery updates.</p>
+                    <a href="https://wa.me/27737500292?text=Hi%20KwaLISO,%20I'd%20like%20to%20inquire%20about%20your%20hoodies!" target="_blank" class="inline-flex items-center gap-2 bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 px-4 py-2.5 rounded-xl text-xs font-bold hover:bg-emerald-600 hover:text-white transition-all">
+                        <i class="fa-brands fa-whatsapp text-sm"></i> Chat on WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-stone-500 gap-4">
+                <p>&copy; 2026 KwaLISO Apparel. All Rights Reserved. Crafted for Comfort & Style.</p>
+                <div class="flex gap-4">
+                    <span>PayFast / EFT Ready</span>
+                    <span>•</span>
+                    <span>Door to Door SA Courier</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Shopping Cart Drawer Overlay -->
+    <div id="cartDrawerBackdrop" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 transition-opacity opacity-0 pointer-events-none"></div>
+    <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-stone-950 border-l border-white/10 z-50 transform translate-x-full transition-transform duration-300 ease-out flex flex-col justify-between">
+        <!-- Cart Header -->
+        <div class="p-6 border-b border-white/10 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-bag-shopping text-brand-gold text-xl"></i>
+                <h3 class="font-display font-bold text-xl text-white">Your Cart</h3>
+                <span id="cartCountHeader" class="bg-white/10 text-xs px-2.5 py-1 rounded-full text-stone-300">0 items</span>
+            </div>
+            <button onclick="toggleCartDrawer()" class="text-stone-400 hover:text-white p-2 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cartItemsList" class="p-6 overflow-y-auto flex-grow space-y-4">
+            <!-- Empty Cart Message -->
+            <div id="emptyCartMsg" class="text-center py-12 text-stone-500">
+                <i class="fa-solid fa-bag-shopping text-4xl mb-3 opacity-30"></i>
+                <p class="text-sm font-semibold">Your bag is currently empty</p>
+                <p class="text-xs text-stone-600 mt-1">Explore our flagship 3-layer hoodie or collection to add items.</p>
+            </div>
+        </div>
+
+        <!-- Cart Footer & Checkout -->
+        <div class="p-6 border-t border-white/10 bg-black/40 space-y-4">
+            <div class="space-y-2 text-xs text-stone-400">
+                <div class="flex justify-between">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal" class="font-bold text-white">R0.00</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Estimated Shipping (RSA Courier)</span>
+                    <span id="cartShipping" class="font-bold text-white">R70.00</span>
+                </div>
+                <div class="flex justify-between text-sm text-white font-bold pt-2 border-t border-white/10">
+                    <span>Total</span>
+                    <span id="cartTotal" class="text-brand-gold text-lg">R0.00</span>
+                </div>
+            </div>
+
+            <button id="checkoutBtn" onclick="openCheckoutModal()" disabled class="w-full bg-gradient-to-r from-brand-terracotta to-amber-600 disabled:opacity-40 disabled:cursor-not-allowed hover:from-amber-600 hover:to-brand-terracotta text-white font-bold py-3.5 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all">
+                Proceed To Order <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Size Guide Modal -->
+    <div id="sizeGuideModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-stone-900 border border-white/10 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleModal('sizeGuideModal')" class="absolute top-6 right-6 text-stone-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="font-display font-bold text-2xl text-white mb-2">KwaLISO Size & Fit Guide</h3>
+            <p class="text-xs text-stone-400 mb-6">Our 3-layer hoodies feature a relaxed modern streetwear fit. For a tighter slim fit, order one size down.</p>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs text-stone-300">
+                    <thead class="bg-white/5 uppercase text-brand-gold font-bold">
+                        <tr>
+                            <th class="p-3 rounded-l-xl">Size</th>
+                            <th class="p-3">Chest Width (cm)</th>
+                            <th class="p-3">Body Length (cm)</th>
+                            <th class="p-3 rounded-r-xl">Recommended Height</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5">
+                        <tr><td class="p-3 font-bold text-white">Small (S)</td><td class="p-3">54 cm</td><td class="p-3">68 cm</td><td class="p-3">155 - 165 cm</td></tr>
+                        <tr><td class="p-3 font-bold text-white">Medium (M)</td><td class="p-3">57 cm</td><td class="p-3">71 cm</td><td class="p-3">165 - 175 cm</td></tr>
+                        <tr><td class="p-3 font-bold text-white">Large (L)</td><td class="p-3">60 cm</td><td class="p-3">74 cm</td><td class="p-3">175 - 182 cm</td></tr>
+                        <tr><td class="p-3 font-bold text-white">X-Large (XL)</td><td class="p-3">63 cm</td><td class="p-3">77 cm</td><td class="p-3">182 - 190 cm</td></tr>
+                        <tr><td class="p-3 font-bold text-white">XX-Large (XXL)</td><td class="p-3">66 cm</td><td class="p-3">80 cm</td><td class="p-3">190cm+</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-6 bg-white/5 p-4 rounded-2xl border border-white/5 flex items-start gap-3">
+                <i class="fa-solid fa-circle-info text-brand-gold text-lg mt-0.5"></i>
+                <p class="text-xs text-stone-400 leading-relaxed">
+                    <strong>Fabric Note:</strong> Due to the heavy 3-layer cotton fleece construction, hoodies experience minimal shrinkage (< 2%) after first wash. Wash inside out with cold water.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View / Add to Bag Product Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-stone-900 border border-white/10 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative">
+            <button onclick="toggleModal('productModal')" class="absolute top-6 right-6 text-stone-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div id="modalProductContent">
+                <!-- Dynamically populated via script -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-start justify-center pt-20 p-4 hidden">
+        <div class="bg-stone-900 border border-white/10 rounded-3xl max-w-xl w-full p-6 relative">
+            <div class="flex items-center gap-3 border-b border-white/10 pb-4">
+                <i class="fa-solid fa-magnifying-glass text-stone-400"></i>
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search hoodies, tees, caps..." class="bg-transparent w-full text-white focus:outline-none text-base">
+                <button onclick="toggleModal('searchModal')" class="text-stone-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="searchResults" class="mt-4 max-h-60 overflow-y-auto space-y-2">
+                <p class="text-xs text-stone-500 text-center py-4">Start typing to search items...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal with WhatsApp integration -->
+    <div id="checkoutModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-stone-900 border border-white/10 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleModal('checkoutModal')" class="absolute top-6 right-6 text-stone-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h3 class="font-display font-bold text-2xl text-white mb-1">Complete Your Order</h3>
+            <p class="text-xs text-stone-400 mb-6">Enter details below to generate your direct WhatsApp order.</p>
+
+            <form id="checkoutForm" onsubmit="handleCheckoutSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-stone-400 uppercase mb-1">Full Name</label>
+                    <input type="text" id="custName" required placeholder="e.g. Sipho Ndlovu" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white text-sm focus:border-brand-gold focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-stone-400 uppercase mb-1">Delivery Address & City</label>
+                    <textarea id="custAddress" required rows="2" placeholder="e.g. 14 Long Street, Cape Town, 8001" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white text-sm focus:border-brand-gold focus:outline-none"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-stone-400 uppercase mb-1">Phone / WhatsApp</label>
+                        <input type="tel" id="custPhone" required placeholder="071 234 5678" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white text-sm focus:border-brand-gold focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-stone-400 uppercase mb-1">Payment Preference</label>
+                        <select id="payMethod" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 text-white text-sm focus:border-brand-gold focus:outline-none">
+                            <option value="EFT / Capitec Pay">EFT / Instant Pay</option>
+                            <option value="Card Payment Link">Card Link</option>
+                            <option value="Cash on Delivery (Selected Areas)">Cash on Delivery</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-black/40 p-4 rounded-xl border border-white/5 space-y-2 text-xs">
+                    <p class="font-bold text-white">Order Summary Preview:</p>
+                    <div id="checkoutSummaryText" class="text-stone-400 whitespace-pre-line font-mono text-[11px] max-h-28 overflow-y-auto"></div>
+                </div>
+
+                <div class="flex flex-col gap-2 pt-2">
+                    <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 rounded-xl flex items-center justify-center gap-2 shadow-lg transition-all">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Send Order via WhatsApp
+                    </button>
+                    <button type="button" onclick="copyOrderSummary()" class="w-full bg-white/5 hover:bg-white/10 text-stone-300 font-semibold py-2.5 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-copy"></i> Copy Order Text to Clipboard
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="fixed bottom-6 right-6 bg-brand-gold text-black font-bold px-5 py-3 rounded-2xl shadow-2xl z-50 transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-2">
+        <i class="fa-solid fa-circle-check"></i> <span id="toastMsg">Item added to cart!</span>
+    </div>
+
+    <script>
+        // Product Catalog Data
+        const products = [
+            {
+                id: 'h1',
+                name: '3-Layer Heavyweight Hoodie - Black',
+                category: 'hoodies',
+                price: 220,
+                origPrice: 250,
+                color: ' Black',
+                colorHex: '#1e1e1e',
+                sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+                tag: 'BESTSELLER',
+                badgeBg: 'bg-brand-terracotta',
+                desc: 'Our flagship 3-layer cotton-fleece hoodie built for extreme comfort and crisp street silhouette.'
+            },
+            {
+                id: 'h2',
+                name: '3-Layer Heavyweight Hoodie - GREY',
+                category: 'hoodies',
+                price: 220,
+                origPrice: 250,
+                color: 'Terracotta Clay',
+                colorHex: '#923c1e',
+                sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+                tag: 'NEW COLOR',
+                badgeBg: 'bg-amber-600',
+                desc: 'Warm neutral African clay tone in our signature 3-layer thermal fleece design.'
+            },
+            {
+                id: 'h3',
+                name: '3-Layer Heavyweight Hoodie - Beige',
+                category: 'hoodies',
+                price: 220,
+                origPrice: 250,
+                color: 'Safari Beige',
+                colorHex: '#c5b39b',
+                sizes: ['S', 'M', 'L', 'XL'],
+                tag: 'POPULAR',
+                badgeBg: 'bg-stone-600',
+                desc: 'Clean minimal earth tone hoodie. 420 GSM 3-layer insulated cotton blend.'
+            },
+            {
+                id: 'h4',
+                name: '3-Layer Heavyweight Hoodie - Forest Emerald',
+                category: 'hoodies',
+                price: 220,
+                origPrice: 250,
+                color: 'GREY',
+                colorHex: '#1b3b2b',
+                sizes: ['M', 'L', 'XL', 'XXL'],
+                tag: 'LIMITED',
+                badgeBg: 'bg-GREY-700',
+                desc: 'Deep GREY colorway with brushed thermal interior lining.'
+            },
+            {
+                id: 's1',
+                name: 'KwaLISO Heritage Crewneck Sweater',
+                category: 'sweaters',
+                price: 190,
+                origPrice: 280,
+                color: 'Black',
+                colorHex: '#1e1e1e',
+                sizes: ['S', 'M', 'L', 'XL'],
+                tag: 'ESSENTIAL',
+                badgeBg: 'bg-stone-700',
+                desc: 'Heavyweight fleece-lined crewneck with embroidered KwaLISO chest emblem.'
+            },
+            {
+                id: 't1',
+                name: 'KwaLISO Boxy Fit Oversized Tee',
+                category: 'tees',
+                price: 130,
+                origPrice: 250,
+                color: 'Vintage Wash Black',
+                colorHex: '#2b2b2b',
+                sizes: ['S', 'M', 'L', 'XL'],
+                tag: 'STREET FIT',
+                badgeBg: 'bg-stone-800',
+                desc: '240 GSM heavy cotton oversized tee with drop shoulder silhouette.'
+            },
+            {
+                id: 't2',
+                name: 'KwaLISO Monogram Minimalist Tee',
+                category: 'tees',
+                price: 120,
+                origPrice: 220,
+                color: 'White Sand',
+                colorHex: '#e5e0d8',
+                sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+                tag: 'CORE',
+                badgeBg: 'bg-stone-800',
+                desc: 'Soft breathable 100% carded cotton everyday tee with high-density brand stamp.'
+            },
+            {
+                id: 'a1',
+                name: 'KwaLISO Embroidered Trucker Cap',
+                category: 'accessories',
+                price: 90,
+                origPrice: 180,
+                color: 'Black / Gold',
+                colorHex: '#121212',
+                sizes: ['One Size'],
+                tag: 'ACCESSORY',
+                badgeBg: 'bg-brand-gold',
+                desc: 'Structured 5-panel mesh cap with high-density 3D embroidered front logo.'
+            }
+        ];
+
+        // Global State
+        let cart = [];
+        let heroState = {
+            color: 'Black',
+            colorHex: '#1e1e1e',
+            size: 'M'
+        };
+        let activeCategory = 'all';
+
+        // Initialize Page Data
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProductsGrid();
+            updateCartUI();
+        });
+
+        function renderProductsGrid() {
+            const grid = document.getElementById('productsGrid');
+            const filtered = activeCategory === 'all' 
+                ? products 
+                : products.filter(p => p.category === activeCategory);
+
+            grid.innerHTML = filtered.map(product => `
+                <div class="glass-card rounded-3xl overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="relative bg-stone-900 p-6 aspect-square flex items-center justify-center overflow-hidden">
+                        <!-- Badge -->
+                        <span class="absolute top-4 left-4 ${product.badgeBg} text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider">
+                            ${product.tag}
+                        </span>
+
+                        <!-- Dynamic SVG representation based on product type -->
+                        <div class="w-full h-full flex items-center justify-center group-hover:scale-105 transition-transform duration-500">
+                            ${getProductSvg(product)}
+                        </div>
+
+                        <!-- Quick Action Overlay -->
+                        <div class="absolute inset-0 bg-black/40 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-4">
+                            <button onclick="openProductModal('${product.id}')" class="bg-white text-black font-bold text-xs px-4 py-2.5 rounded-xl shadow-lg hover:bg-brand-gold transition-colors">
+                                Quick View & Options
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-5 flex flex-col justify-between flex-grow space-y-3">
+                        <div>
+                            <h3 class="font-bold text-sm text-white group-hover:text-brand-gold transition-colors line-clamp-1">${product.name}</h3>
+                            <p class="text-xs text-stone-400 mt-1 line-clamp-2">${product.desc}</p>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2 border-t border-white/5">
+                            <div>
+                                <span class="text-lg font-extrabold text-white">R${product.price}</span>
+                                <span class="text-xs text-stone-500 line-through ml-1.5">R${product.origPrice}</span>
+                            </div>
+                            <button onclick="openProductModal('${product.id}')" class="bg-white/10 hover:bg-brand-terracotta text-white p-2.5 rounded-xl transition-colors">
+                                <i class="fa-solid fa-plus text-xs"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // SVG Product Generator helper
+        function getProductSvg(product) {
+            if(product.category === 'hoodies') {
+                return `
+                <svg viewBox="0 0 300 300" class="w-4/5 h-4/5 drop-shadow-md">
+                    <path d="M90,80 Q150,50 210,80 L260,130 Q240,160 220,150 L210,135 L215,260 Q150,270 85,260 L90,135 L80,150 Q60,160 40,130 Z" fill="${product.colorHex}" stroke="#444" stroke-width="1.5" />
+                    <path d="M120,70 Q150,100 180,70 Q150,40 120,70 Z" fill="#111" />
+                    <text x="150" y="150" font-family="'Syne', sans-serif" font-weight="bold" font-size="14" fill="#D4AF37" text-anchor="middle">KWALISO</text>
+                </svg>`;
+            } else if(product.category === 'sweaters') {
+                return `
+                <svg viewBox="0 0 300 300" class="w-4/5 h-4/5 drop-shadow-md">
+                    <path d="M90,90 Q150,70 210,90 L260,135 Q240,165 220,150 L210,135 L215,260 Q150,270 85,260 L90,135 L80,150 Q60,165 40,135 Z" fill="${product.colorHex}" stroke="#444" stroke-width="1.5" />
+                    <path d="M125,90 Q150,105 175,90" fill="none" stroke="#222" stroke-width="4" />
+                    <text x="150" y="160" font-family="'Syne', sans-serif" font-weight="bold" font-size="14" fill="#fff" text-anchor="middle">KWALISO</text>
+                </svg>`;
+            } else if(product.category === 'tees') {
+                return `
+                <svg viewBox="0 0 300 300" class="w-4/5 h-4/5 drop-shadow-md">
+                    <path d="M95,85 Q150,75 205,85 L255,120 L225,150 L205,140 L205,260 L95,260 L95,140 L75,150 L45,120 Z" fill="${product.colorHex}" stroke="#444" stroke-width="1.5" />
+                    <path d="M125,83 Q150,100 175,83" fill="none" stroke="#222" stroke-width="3" />
+                    <text x="150" y="150" font-family="'Syne', sans-serif" font-weight="bold" font-size="12" fill="#888" text-anchor="middle">KwaLISO</text>
+                </svg>`;
+            } else {
+                return `
+                <svg viewBox="0 0 300 300" class="w-4/5 h-4/5 drop-shadow-md">
+                    <path d="M70,170 Q150,80 230,170 Q260,180 250,200 Q150,200 50,200 Q40,180 70,170 Z" fill="${product.colorHex}" stroke="#444" stroke-width="1.5" />
+                    <path d="M50,195 Q150,210 250,195 L260,205 Q150,225 40,205 Z" fill="#333" />
+                    <circle cx="150" cy="120" r="6" fill="#D4AF37" />
+                </svg>`;
+            }
+        }
+
+        // Hero Config Handlers
+        function selectHeroColor(colorName, colorHex) {
+            heroState.color = colorName;
+            heroState.colorHex = colorHex;
+            document.getElementById('selectedColorName').innerText = colorName;
+            
+            // Update Hero SVG fill color
+            document.getElementById('hoodieBody').setAttribute('fill', colorHex);
+
+            // Update color buttons visual state
+            document.querySelectorAll('.hero-color-btn').forEach(btn => {
+                if(btn.title === colorName) {
+                    btn.classList.add('border-brand-gold');
+                    btn.classList.remove('border-transparent');
+                } else {
+                    btn.classList.remove('border-brand-gold');
+                    btn.classList.add('border-transparent');
+                }
+            });
+        }
+
+        function selectHeroSize(size) {
+            heroState.size = size;
+            document.querySelectorAll('.hero-size-btn').forEach(btn => {
+                if(btn.innerText.trim() === size) {
+                    btn.className = 'hero-size-btn py-3 rounded-xl border border-brand-gold text-sm font-bold bg-brand-gold text-black transition-all';
+                } else {
+                    btn.className = 'hero-size-btn py-3 rounded-xl border border-white/10 text-sm font-bold hover:border-brand-gold transition-all bg-white/5 text-white';
+                }
+            });
+        }
+
+        function addHeroToCart() {
+            const flagshipItem = {
+                id: 'h1-' + heroState.color + '-' + heroState.size,
+                name: `3-Layer Hoodie (${heroState.color})`,
+                price: 220,
+                color: heroState.color,
+                size: heroState.size,
+                quantity: 1,
+                colorHex: heroState.colorHex
+            };
+
+            addToCart(flagshipItem);
+            showToast(`Added ${heroState.color} Hoodie (${heroState.size}) to Bag!`);
+        }
+
+        function orderHeroWhatsApp() {
+            const text = `Hi KwaLISO! I would like to order the Flagship 3-Layer Hoodie directly:\n- Color: ${heroState.color}\n- Size: ${heroState.size}\n- Price: R220\n\nPlease send payment/delivery details!`;
+            const url = `https://wa.me/27737500292?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        // Category Filtering
+        function filterCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-gold', 'text-black');
+                btn.classList.add('bg-white/5', 'text-stone-300');
+            });
+            event.target.classList.add('bg-brand-gold', 'text-black');
+            event.target.classList.remove('bg-white/5', 'text-stone-300');
+            renderProductsGrid();
+        }
+
+        // Cart State Management
+        function addToCart(item) {
+            const existingIndex = cart.findIndex(i => i.id === item.id && i.size === item.size);
+            if(existingIndex > -1) {
+                cart[existingIndex].quantity += 1;
+            } else {
+                cart.push(item);
+            }
+            updateCartUI();
+        }
+
+        function updateCartQuantity(index, change) {
+            cart[index].quantity += change;
+            if(cart[index].quantity <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsList = document.getElementById('cartItemsList');
+            const emptyCartMsg = document.getElementById('emptyCartMsg');
+            const cartBadge = document.getElementById('cartBadge');
+            const cartCountHeader = document.getElementById('cartCountHeader');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = totalCount > 0 ? 70 : 0;
+            const grandTotal = subtotal + shipping;
+
+            // Update Badge & Header
+            cartCountHeader.innerText = `${totalCount} item${totalCount === 1 ? '' : 's'}`;
+            if(totalCount > 0) {
+                cartBadge.innerText = totalCount;
+                cartBadge.classList.remove('hidden');
+                checkoutBtn.disabled = false;
+            } else {
+                cartBadge.classList.add('hidden');
+                checkoutBtn.disabled = true;
+            }
+
+            // Update Totals
+            document.getElementById('cartSubtotal').innerText = `R${subtotal.toFixed(2)}`;
+            document.getElementById('cartShipping').innerText = shipping > 0 ? `R${shipping.toFixed(2)}` : 'R0.00';
+            document.getElementById('cartTotal').innerText = `R${grandTotal.toFixed(2)}`;
+
+            // Render Items
+            if(cart.length === 0) {
+                cartItemsList.innerHTML = `
+                    <div id="emptyCartMsg" class="text-center py-12 text-stone-500">
+                        <i class="fa-solid fa-bag-shopping text-4xl mb-3 opacity-30"></i>
+                        <p class="text-sm font-semibold">Your bag is currently empty</p>
+                        <p class="text-xs text-stone-600 mt-1">Explore our flagship 3-layer hoodie or collection to add items.</p>
+                    </div>`;
+            } else {
+                cartItemsList.innerHTML = cart.map((item, index) => `
+                    <div class="glass-card p-4 rounded-2xl flex items-center justify-between gap-3 border border-white/5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-stone-900 border border-white/10 flex items-center justify-center font-bold text-xs" style="color: ${item.colorHex || '#FFF'}">
+                                K
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-white line-clamp-1">${item.name}</h4>
+                                <p class="text-[11px] text-stone-400">Size: <span class="text-white">${item.size}</span> | R${item.price}</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center bg-black/60 rounded-lg border border-white/10">
+                                <button onclick="updateCartQuantity(${index}, -1)" class="px-2 py-1 text-stone-400 hover:text-white text-xs">-</button>
+                                <span class="px-2 text-xs font-bold text-white">${item.quantity}</span>
+                                <button onclick="updateCartQuantity(${index}, 1)" class="px-2 py-1 text-stone-400 hover:text-white text-xs">+</button>
+                            </div>
+                            <button onclick="updateCartQuantity(${index}, -${item.quantity})" class="text-stone-500 hover:text-rose-400 text-xs p-1">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Quick View Modal Opener
+        function openProductModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if(!product) return;
+
+            let selectedModalSize = product.sizes[0];
+
+            const modalContent = document.getElementById('modalProductContent');
+            modalContent.innerHTML = `
+                <div class="space-y-5">
+                    <div class="flex gap-4 items-center">
+                        <div class="w-20 h-20 rounded-2xl bg-stone-950 flex items-center justify-center p-2 border border-white/10">
+                            ${getProductSvg(product)}
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-brand-gold bg-brand-gold/10 px-2 py-0.5 rounded">${product.tag}</span>
+                            <h3 class="font-bold text-lg text-white mt-1">${product.name}</h3>
+                            <div class="flex items-baseline gap-2 mt-1">
+                                <span class="text-xl font-extrabold text-white">R${product.price}</span>
+                                <span class="text-xs text-stone-500 line-through">R${product.origPrice}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-stone-300 leading-relaxed">${product.desc}</p>
+
+                    <div>
+                        <label class="block text-xs font-bold text-stone-400 uppercase mb-2">Select Size</label>
+                        <div class="flex flex-wrap gap-2">
+                            ${product.sizes.map((s, idx) => `
+                                <button onclick="selectModalSize(this, '${s}')" class="modal-size-btn px-4 py-2 rounded-xl border text-xs font-bold ${idx === 0 ? 'border-brand-gold bg-brand-gold text-black' : 'border-white/10 bg-white/5 text-white hover:border-white/30'}">
+                                    ${s}
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex gap-3 border-t border-white/10">
+                        <button id="modalAddBtn" onclick="addModalProductToBag('${product.id}', '${product.name}', ${product.price}, '${product.colorHex}')" class="flex-1 bg-gradient-to-r from-brand-terracotta to-amber-600 hover:from-amber-600 hover:to-brand-terracotta text-white font-bold py-3 rounded-xl text-xs flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-solid fa-bag-shopping"></i> Add To Bag - R${product.price}
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            window.currentModalSelectedSize = selectedModalSize;
+            toggleModal('productModal');
+        }
+
+        function selectModalSize(btn, size) {
+            window.currentModalSelectedSize = size;
+            document.querySelectorAll('.modal-size-btn').forEach(b => {
+                b.className = 'modal-size-btn px-4 py-2 rounded-xl border text-xs font-bold border-white/10 bg-white/5 text-white hover:border-white/30';
+            });
+            btn.className = 'modal-size-btn px-4 py-2 rounded-xl border text-xs font-bold border-brand-gold bg-brand-gold text-black';
+        }
+
+        function addModalProductToBag(id, name, price, colorHex) {
+            const size = window.currentModalSelectedSize || 'M';
+            addToCart({
+                id: `${id}-${size}`,
+                name: name,
+                price: price,
+                size: size,
+                quantity: 1,
+                colorHex: colorHex
+            });
+            toggleModal('productModal');
+            showToast(`Added ${name} (${size}) to Bag!`);
+        }
+
+        // Checkout & WhatsApp Order Generation
+        function openCheckoutModal() {
+            toggleCartDrawer();
+            
+            // Generate Summary Text Preview
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = 70;
+            const grandTotal = subtotal + shipping;
+
+            let summary = `*KWALISO APPAREL - NEW ORDER*\n------------------------------\n`;
+            cart.forEach(item => {
+                summary += `• ${item.name}\n  Size: ${item.size} | Qty: ${item.quantity} | R${item.price * item.quantity}\n`;
+            });
+            summary += `------------------------------\nSubtotal: R${subtotal.toFixed(2)}\nShipping (Courier): R${shipping.toFixed(2)}\n*TOTAL: R${grandTotal.toFixed(2)}*`;
+
+            document.getElementById('checkoutSummaryText').innerText = summary;
+            toggleModal('checkoutModal');
+        }
+
+        function handleCheckoutSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('custName').value;
+            const address = document.getElementById('custAddress').value;
+            const phone = document.getElementById('custPhone').value;
+            const payMethod = document.getElementById('payMethod').value;
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = 70;
+            const grandTotal = subtotal + shipping;
+
+            let message = `*KWALISO APPAREL - OFFICIAL ORDER*\n\n`;
+            message += `*Customer Details:*\n`;
+            message += `Name: ${name}\n`;
+            message += `Phone: ${phone}\n`;
+            message += `Address: ${address}\n`;
+            message += `Payment Method: ${payMethod}\n\n`;
+            message += `*Order Items:*\n`;
+            cart.forEach(item => {
+                message += `• ${item.name} (${item.size}) x${item.quantity} - R${item.price * item.quantity}\n`;
+            });
+            message += `\n*Subtotal:* R${subtotal.toFixed(2)}\n`;
+            message += `*Courier Delivery:* R${shipping.toFixed(2)}\n`;
+            message += `*GRAND TOTAL:* R${grandTotal.toFixed(2)}\n\n`;
+            message += `Please process my order and provide banking/payment details!`;
+
+            const encoded = encodeURIComponent(message);
+            window.open(`https://wa.me/27737500292?text=${encoded}`, '_blank');
+        }
+
+        function copyOrderSummary() {
+            const summaryText = document.getElementById('checkoutSummaryText').innerText;
+            
+            // Fallback clipboard logic per instructions
+            const tempInput = document.createElement('textarea');
+            tempInput.value = summaryText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast('Order details copied to clipboard!');
+        }
+
+        // Search Filter Logic
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if(!query.trim()) {
+                resultsContainer.innerHTML = '<p class="text-xs text-stone-500 text-center py-4">Start typing to search items...</p>';
+                return;
+            }
+
+            const matches = products.filter(p => p.name.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+
+            if(matches.length === 0) {
+                resultsContainer.innerHTML = '<p class="text-xs text-stone-500 text-center py-4">No matching items found</p>';
+            } else {
+                resultsContainer.innerHTML = matches.map(p => `
+                    <div onclick="toggleModal('searchModal'); openProductModal('${p.id}')" class="p-3 bg-white/5 hover:bg-white/10 rounded-xl cursor-pointer flex items-center justify-between border border-white/5 transition-colors">
+                        <div>
+                            <h4 class="text-xs font-bold text-white">${p.name}</h4>
+                            <p class="text-[10px] text-stone-400">R${p.price} • ${p.category}</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right text-stone-500 text-xs"></i>
+                    </div>
+                `).join('');
+            }
+        }
+
+        // Modal Helpers
+        function toggleModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.toggle('hidden');
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cartDrawer');
+            const backdrop = document.getElementById('cartDrawerBackdrop');
+
+            if(drawer.classList.contains('translate-x-full')) {
+                drawer.classList.remove('translate-x-full');
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                drawer.classList.add('translate-x-full');
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
